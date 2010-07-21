@@ -39,6 +39,10 @@ describe Mail::Message do
     it "should be able to parse a basic email" do
       doing { Mail::Message.new(File.read(fixture('emails', 'plain_emails', 'basic_email.eml'))) }.should_not raise_error
     end
+    
+    it "should be able to parse a basic email with mixed case content type" do
+      doing { Mail::Message.new(File.read(fixture('emails', 'plain_emails', 'mixed_case_content_type.eml'))) }.should_not raise_error
+    end
 
     it "should be able to parse an email with only blank lines as body" do
       doing { Mail::Message.new(File.read(fixture('emails', 'error_emails', 'missing_body.eml'))) }.should_not raise_error
